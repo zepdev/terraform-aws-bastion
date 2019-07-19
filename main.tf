@@ -34,6 +34,7 @@ resource "aws_security_group" "bastion" {
 }
 
 resource "aws_instance" "bastion" {
+  count                       = "${length(var.public_subnet_ids)}"
   ami                         = "${var.ami}"
   instance_type               = "${var.instance_type}"
   subnet_id                   = "${element(split(",", var.public_subnet_ids), count.index)}"
