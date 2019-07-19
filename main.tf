@@ -37,7 +37,7 @@ resource "aws_instance" "bastion" {
   count                       = "${length(var.public_subnet_ids)}"
   ami                         = "${var.ami}"
   instance_type               = "${var.instance_type}"
-  subnet_id                   = "${element(split(",", var.public_subnet_ids), count.index)}"
+  subnet_id                   = "${element(var.public_subnet_ids, count.index)}"
   key_name                    = "${var.key_name}"
   vpc_security_group_ids      = ["${aws_security_group.bastion.id}"]
   associate_public_ip_address = true
