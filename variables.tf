@@ -16,6 +16,7 @@ variable "vpc_cidr" {
 }
 
 variable "public_subnet_ids" {
+  type = "list"
   description = "IDs for the public subnet(s) you want your bastion host to join"
 }
 
