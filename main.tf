@@ -3,7 +3,7 @@ resource "aws_security_group" "bastion" {
   vpc_id      = "${var.vpc_id}"
   description = "Bastion security group"
 
-  tags {
+  tags = {
     Name = "${var.name}"
   }
 
@@ -41,7 +41,7 @@ resource "aws_instance" "bastion" {
   vpc_security_group_ids      = ["${aws_security_group.bastion.id}"]
   associate_public_ip_address = true
 
-  tags {
+  tags = {
     Name = "${var.name}"
   }
 
